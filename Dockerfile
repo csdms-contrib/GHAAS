@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS base
+FROM ubuntu:24.04 AS base
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     apt-get install -y tzdata gnupg gnupg-utils lsb-release wget ca-certificates apt-transport-https curl screen bc
 ENTRYPOINT [ "/bin/bash" ]
@@ -7,7 +7,7 @@ ENTRYPOINT [ "/bin/bash" ]
 FROM base AS rgisbuild
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends git cmake clang make libshp-dev libnetcdf-dev libudunits2-dev libgdal-dev libexpat1-dev libxext-dev libmotif-dev libshp-dev
-RUN git clone https://github.com/bmfekete/RGIS /tmp/RGIS && /tmp/RGIS/install.sh /usr/local/share && rm -rf /tmp/RGIS
+RUN git clone https://github.com/asrc-esi/GHAAS /tmp/GHAAS && /tmp/RGIS/install.sh /usr/local/share && rm -rf /tmp/GHAAS
 
 # RGIS container
 FROM base AS rgis
