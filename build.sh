@@ -3,6 +3,8 @@
 build_type=debug  # release or debug
 build_dir=_build
 
+trap "exit 1" ERR
+
 if [ $build_type == "debug" ]; then
     dest_dir=$HOME/tmp/ghaas-debug
 else
