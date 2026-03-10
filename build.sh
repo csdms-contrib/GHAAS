@@ -1,9 +1,9 @@
 #! /usr/bin/env bash
 
-build_type=Debug
+build_type=debug  # release or debug
 build_dir=_build
 
-if [ $build_type == "Debug" ]; then
+if [ $build_type == "debug" ]; then
     dest_dir=$HOME/tmp/ghaas-debug
 else
     dest_dir=$CONDA_PREFIX
