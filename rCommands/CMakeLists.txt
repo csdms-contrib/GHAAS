@@ -14,10 +14,6 @@ pntSymbolField rgis2ascii rgis2domain rgis2ds rgis2netcdf rgis2mapper rgis2shp r
 tblConvCoord tblDecimalDate tblDeleteField tblDeleteRec tblIdleRec tblJoinTables tblMergeCoord tblMergeDate tblMJoinTables tblRedefField tblSelectRec vdbLookup
 tblSortRec tblSplitDate tblStatistics tblTopoCalc )
 	add_executable(${loop_var} src/CMD${loop_var}.cpp)
-	if(${CMAKE_HOST_APPLE})
-		target_link_libraries(${loop_var} LINK_PUBLIC VDB30 RG30 MF30 DB30 CM30 -lnetcdf -ludunits2 -lshp -lm)
-	else(${CMAKE_HOST_APPLE})
-		target_link_libraries(${loop_var} LINK_PUBLIC VDB30 RG30 MF30 DB30 CM30 -lnetcdf -ludunits2 -lshp -lm -pthread)
-	endif(${CMAKE_HOST_APPLE})
-	install (TARGETS ${loop_var} RUNTIME DESTINATION ghaas/bin)
+	target_link_libraries(${loop_var} LINK_PUBLIC VDB30 RG30 MF30 DB30 CM30 -lnetcdf -ludunits2 -lshp -lm -pthread)
+	install (TARGETS ${loop_var} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}/ghaas)
 endforeach(loop_var)
